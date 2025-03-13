@@ -40,14 +40,36 @@ h1 {
     box-shadow: 3px 2px 6px lightgrey;
 }
 
+.form-wrapper > div {   
+    padding: 8px 0;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 label, input {
     margin-top: 5px;
     display: block;
     font-size: inherit;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="number"] {
     padding: .25rem;
+}
+
+
+input[type="text"],
+input[type="number"],
+select {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+select {
+    margin-top: .25rem;
+    padding: .5rem;
 }
 
 input[type="submit"] {
@@ -55,6 +77,10 @@ input[type="submit"] {
     border: none;
     padding: .375rem 1rem;
     margin-top: 10px;
+}
+
+button {
+    padding: 8px 16px;
 }
 
 table {

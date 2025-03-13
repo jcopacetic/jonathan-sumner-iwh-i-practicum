@@ -7,3 +7,18 @@ html
     body 
         h1 Update Pets 
         a(href="/") Return to the homepage
+        div.card 
+            form.form-wrapper(method="POST" action="/update-cobj")
+                div
+                    label What's Your Pet's Name?
+                    input(type="text" name="petName")
+                div
+                    label How Old is Your Pet?
+                    input(type="number" name="petAge")
+                div
+                    label What Type of Pet is It?
+                    select(name="petType")
+                        option(value="dog") Dog 
+                        option(value="cat") Cat
+                div
+                    button(type="submit") Save

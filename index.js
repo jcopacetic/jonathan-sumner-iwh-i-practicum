@@ -38,7 +38,7 @@ app.get('/', async (req, res) => {
 
 // * Code for Route 2 goes here
 
-app.get('/update-obj', async (req, res) => {
+app.get('/update-cobj', async (req, res) => {
     const headers = {
         Authorization: `Bearer ${process.env.HUBSPOT_API_TOKEN}`,
         'Content-Type': 'application/json'
@@ -54,13 +54,31 @@ app.get('/update-obj', async (req, res) => {
     }
 });
 
-
 // TODO: ROUTE 3 - Create a new app.post route for the custom objects form to create or update your custom object data. Once executed, redirect the user to the homepage.
 
 // * Code for Route 3 goes here
 
-app.post('/update-obj', (req, res) => {
-    res.send();
+app.post('/update-cobj', async (req, res) => {
+    const createPetUrl = 'https://api.hubapi.com/crm/v3/objects/2-41865851/';
+    const headers = {
+        Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
+        'Content-Type': 'application/json',
+    }
+    const body = {
+        properties: {
+            pet_name: req.body.petName,
+            name: req.body.petName,
+            age: req.body.petAge,
+            type: req.body.petType,
+        }
+    };
+    try {
+        await axios.post(createPetUrl, body, { headers });
+        res.redirect("/");
+    } catch(err) {
+        console.log(err.response ? err.response.data : err.message);
+        res.status(500).send("Error creating custom object");
+    }
 });
 
 
