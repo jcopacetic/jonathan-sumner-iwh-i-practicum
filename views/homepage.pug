@@ -1,0 +1,22 @@
+doctype html
+html
+    head
+        title= `${title}`
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet" href="/css/style.css")
+    body
+        h1 Pets List
+        a(href="/update-obj") Add to this table
+        div.card
+            table
+                thead
+                    tr
+                        th Name
+                        th Age
+                        th Species
+                tbody
+                    each pet in data
+                        tr
+                            td= pet.properties.name
+                            td= pet.properties.age
+                            td= pet.properties.type  
