@@ -14,17 +14,46 @@ const PRIVATE_APP_ACCESS = '';
 
 // * Code for Route 1 goes here
 
+app.get('/', (req, res) => {
+    res.send();
+});
+
 // TODO: ROUTE 2 - Create a new app.get route for the form to create or update new custom object data. Send this data along in the next route.
 
 // * Code for Route 2 goes here
+
+app.get('/update-cobj', async (req, res) => {
+    const pets = 'https"//api.hubapi.com/crm/v3/objects/2-41865851/';
+    const headers = {
+        Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
+        'Content-Type': 'application/json'
+    }
+    try {
+        const resp = await axios.get(pets, { headers });
+        
+        const data = resp.config.results; 
+        
+        res.render('2-41865851', {
+            title: "Update Custom Object Form | Integrating With HubSpot I Practicum",
+        });
+    } catch (error) {
+        console.log(error);
+    }
+    res.send();
+});
+
 
 // TODO: ROUTE 3 - Create a new app.post route for the custom objects form to create or update your custom object data. Once executed, redirect the user to the homepage.
 
 // * Code for Route 3 goes here
 
+app.post('/update-cobj', (req, res) => {
+    res.send();
+});
+
+
 /** 
 * * This is sample code to give you a reference for how you should structure your calls. 
-
 * * App.get sample
 app.get('/contacts', async (req, res) => {
     const contacts = 'https://api.hubspot.com/crm/v3/objects/contacts';
